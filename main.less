@@ -1,0 +1,273 @@
+@light-blue:   hsl(190, 50%, 65%);
+@light-yellow: desaturate(#fefec8, 10%);
+@dark-yellow:  desaturate(darken(@light-yellow, 10%), 40%);
+@darkest:      hsl(20, 0%, 15%);
+@dark:         hsl(190, 20%, 30%);
+@medium:       hsl(10, 60%, 30%);
+@light:        hsl(90, 40%, 20%);
+@lightest:     hsl(90, 20%, 90%);
+@highlight:    hsl(80, 50%, 90%);
+@blue:         hsl(210, 60%, 20%);
+@alpha-blue:   hsla(210, 60%, 40%, 0.5);
+
+.box-shadow (@x, @y, @blur, @alpha) {
+    @value: @x @y @blur rgba(0, 0, 0, @alpha);
+    box-shadow:         @value;
+    -moz-box-shadow:    @value;
+    -webkit-box-shadow: @value;
+}
+.border-radius (@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.border-radius (@radius, bottom) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-top-right-radius: 0;
+    -moz-border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+}
+.border-radius (@radius, right) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-bottom-left-radius: 0;
+    -moz-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+}
+.box-shadow-inset (@x, @y, @blur, @color) {
+    box-shadow: @x @y @blur @color inset;
+    -moz-box-shadow: @x @y @blur @color inset;
+    -webkit-box-shadow: @x @y @blur @color inset;
+}
+.code () {
+    font-family: 'Bitstream Vera Sans Mono',
+    'DejaVu Sans Mono',
+    'Monaco',
+    Courier,
+    monospace !important;
+}
+.wrap () {
+    text-wrap: wrap;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+html { margin: 0 }
+body {
+    background-color: @darkest;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 100%;
+    overflow-x: hidden;
+}
+nav, header, footer, section, article {
+	display: block;
+}
+a {
+    color: #b83000;
+}
+h1 a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+h1, h2, h3, h4 {
+    margin: 0;
+    font-weight: normal;
+}
+ul, li {
+    list-style-type: none;
+}
+code { .code; }
+code {
+    .string, .regexp { color: @dark }
+    .comment { color: rgba(0, 0, 0, 0.5) }
+    .number { color: @blue }
+    .class, .special { color: rgba(0, 50, 100, 0.8) }
+}
+pre {
+    padding: 0 30px;
+    .wrap;
+}
+blockquote {
+    font-style: italic;
+}
+.dark-red {
+    @red: @medium;
+    border: 2px solid darken(@red, 25%);
+    border-left-color: darken(@red, 15%);
+    border-right-color: darken(@red, 15%);
+    border-bottom: 0;
+    border-top: 0;
+    background-color: darken(@red, 10%);
+}
+
+.content {
+    margin: 0 auto;
+    width: 980px;
+}
+
+.page {
+    .content {
+        width: 870px;
+        padding: 45px;
+    }
+    margin: 0 auto;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 26px;
+    padding: 0 60px;
+    code {
+        font-size: 16px;  
+    }
+    pre {
+        border-width: 1px;
+        border-style: dashed;
+        padding: 15px;
+        margin: 15px 0;
+    }
+    h1 {
+        text-align: left;
+        font-size: 40px;
+        margin-top: 15px;
+        margin-bottom: 35px;
+    }
+    p + h1 { margin-top: 60px }
+    h2, h3 {
+        margin: 30px 0 15px 0;
+    }
+    p + h2, pre + h2, code + h2 {
+        border-top: 6px solid rgba(255, 255, 255, 0.1);
+        padding-top: 30px;
+    }
+    h3 {
+        margin: 15px 0;
+    }
+}
+
+
+#docs {
+    @bg: lighten(@light-blue, 5%);
+    border-top: 2px solid lighten(@bg, 5%);
+    color: @blue;
+    background-color: @light-blue;
+    .box-shadow(0, -2px, 5px, 0.2);
+
+    ul li { list-style-type: circle }
+    h1 {
+        font-family: 'Droid Serif', 'Georgia', serif;
+        padding-top: 30px;
+        padding-left: 45px;
+        font-size: 44px;
+        text-align: left;
+        margin: 30px 0 !important;
+        text-shadow: 0px 1px 1px @lightest;
+        font-weight: bold;
+    }
+    .content {
+        clear: both;
+        border-color: transparent;
+        background-color: lighten(@light-blue, 25%);
+        .box-shadow(0, 5px, 5px, 0.4);
+    }
+    pre {
+        @background: lighten(@bg, 30%);
+        color: lighten(@blue, 10%);
+        background-color: @background;
+        border-color: lighten(@light-blue, 25%);
+        border-width: 2px;
+        code .attribute { color: hsl(40, 50%, 30%) }
+        code .variable  { color: hsl(120, 10%, 30%) }
+        code .element { color: hsl(170, 20%, 30%) }
+        code .string, .regexp { color: hsl(75, 50%, 35%) }
+        code .class { color: hsl(40, 40%, 30%); font-weight: normal }
+        code .id { color: hsl(50, 40%, 30%); font-weight: normal }
+        code .comment { color: rgba(0, 0, 0, 0.4) }
+        code .number, .color { color: hsl(10, 40%, 30%) }
+        code .class, code .mixin, .special { color: hsl(190, 20%, 30%) }
+    }
+    pre code                    { font-size: 15px  }
+    p + h2, pre + h2, code + h2 { border-top-color: rgba(0, 0, 0, 0.1) }
+}
+
+td {
+    padding-right: 30px;  
+}
+#synopsis {
+    .box-shadow(0, 5px, 5px, 0.2);
+}
+#examples {
+    h2 {
+        font-size: 30px;  
+        padding: 10px 0;
+    }
+    h1 + h2 {
+        margin-top: 15px;  
+    }
+    h3 { font-size: 22px }
+
+    .less-example {
+        border: 1px dashed rgba(255, 255, 255, 0.5);
+    }
+    a {
+        text-decoration: none;
+        color: @light-yellow;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px dashed @light-yellow;
+        }
+    }
+    @bg: desaturate(darken(@darkest, 5%), 20%);
+    text-shadow: 0 -1px 1px lighten(@bg, 5%);
+    color: @highlight;
+    background-color: @bg;
+    .content {
+        background-color: desaturate(@darkest, 20%);
+        clear: both;
+        .box-shadow(0, 5px, 5px, 0.4);
+    }
+    h1, h2, h3 {
+        color: @dark-yellow;
+    }
+    pre {
+        code .attribute { color: hsl(40, 50%, 70%) }
+        code .variable  { color: hsl(120, 10%, 50%) }
+        code .element   { color: hsl(170, 20%, 50%) }
+
+        code .string, .regexp { color: hsl(75, 50%, 65%) }
+        code .class { color: hsl(40, 40%, 60%); font-weight: normal }
+        code .id { color: hsl(50, 40%, 60%); font-weight: normal }
+        code .comment { color: rgba(255, 255, 255, 0.2) }
+        code .number, .color { color: hsl(10, 40%, 50%) }
+        code .class, code .mixin, .special { color: hsl(190, 20%, 50%) }
+        background-color: @bg;
+        border-color: darken(@light-yellow, 5%);
+        padding: 20px;
+        line-height: 20px;
+        font-size: 14px;
+    }
+    code {
+        color: darken(@dark-yellow, 5%);
+        .string, .regexp { color: desaturate(@light-blue, 15%) }
+        .keyword { color: hsl(40, 50%, 30%); font-weight: normal }
+        .comment { color: rgba(255, 255, 255, 0.2) }
+        .number { color: lighten(@blue, 10%) }
+        .class, .special { color: hsl(190, 20%, 50%) }
+    }
+}
+
+.box {
+    height: 200px;
+    width: 200px;
+    padding: 7px;
+}

@@ -1,0 +1,27 @@
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #444;
+.variables .example > div > div {
+    color: @light-blue;
+    border: thick solid @nice-blue;
+}
+
+.variables .example > div {
+    border: thick solid @light-blue;
+}
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.mixins .example > div > div {
+    color: @light-blue;
+    border: thick solid @nice-blue;
+    .rounded-corners;
+}
+
+.mixins .example > div {
+    border: thick solid @light-blue;
+    .rounded-corners(10px);
+}
