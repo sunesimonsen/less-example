@@ -216,6 +216,7 @@ td {
     h3 { font-size: 22px }
 
     .less-example {
+        width: 575px;
         border: 1px dashed rgba(255, 255, 255, 0.5);
     }
     a {
@@ -266,8 +267,26 @@ td {
     }
 }
 
+.small-boxes {
+    width: 70px;
+    div {
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        background-color: gray;
+        float: left;
+    }
+}
+
 .box {
     height: 200px;
+    width: 200px;
+    padding: 7px;
+}
+
+.half-box {
+    height: 100px;
     width: 200px;
     padding: 7px;
 }
