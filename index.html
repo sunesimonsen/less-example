@@ -1,7 +1,7 @@
 <html>
   <head>
-    <link rel="stylesheet/less" type="text/css" href="styles.less">
     <link rel="stylesheet/less" type="text/css" href="main.less">
+    <link rel="stylesheet/less" type="text/css" href="styles.less">
     <script src="less-1.3.0.js" type="text/javascript"></script>
   </head>
   <body>
@@ -19,15 +19,16 @@
                 <td>
                   <pre class="less-example">
                     <code>
-@nice-blue: #5B83AD;
-@light-blue: @nice-blue + #444;
+@color0: lightgreen;
+@color1: green;
+@color2: darkgreen;
 .variables .example > div > div {
-    color: @light-blue;
-    border: thick solid @nice-blue;
+    background-color: @color2;
+    border: thick solid @color1;
 }
 
 .variables .example > div {
-    border: thick solid @light-blue;
+    border: thick solid @color0;
 }
                     </code>
                   </pre>
@@ -36,10 +37,6 @@
                   <div class="example">
                     <div>
                       <div class="box">
-                        Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry. Lorem Ipsum
-                        has been the industry's standard dummy text
-                        ever since the 1500s.
                       </div>
                     </div>
                   </div>
@@ -74,13 +71,13 @@
 }
 
 .mixins .example > div > div {
-    .thick-border(@nice-blue);
-    color: @light-blue;
+    .thick-border(@color1);
+    background-color: @color2;
     .rounded-corners;
 }
 
 .mixins .example > div {
-    .thick-border(@light-blue);
+    .thick-border(@color0);
     .rounded-corners(10px);
 }
                   </code>
@@ -90,10 +87,6 @@
                 <div class="example">
                   <div>
                     <div class="box">
-                      Lorem Ipsum is simply dummy text of the
-                      printing and typesetting industry. Lorem Ipsum
-                      has been the industry's standard dummy text
-                      ever since the 1500s.
                     </div>
                   </div>
                 </div>
@@ -115,20 +108,13 @@
               <td>
                 <pre class="less-example">
                   <code>
-@orange: orange;
-@dark-orange: @orange - #444;
-.nested_rules {
-    .example {
-        div {
-            border: thick solid @nice-blue;
-
-            div:first-child {
-                border: thick solid @orange;
-            }
-            div:last-child {
-                border: thick solid @dark-orange;
-            }
-        }
+.nested_rules .example div {
+    border: thick solid @color2;
+    div:first-child {
+        .gradient(@color2, @color0, @color1);
+    }
+    div:last-child {
+        .gradient(@color2, @color2, @color0);
     }
 }
                   </code>
@@ -159,22 +145,21 @@
               <td>
                 <pre class="less-example">
                   <code>
-@color: green;
 .functions .example div {
     div:nth-child(1n+1) {
-        background-color: @color;
+        background-color: @color1;
     }
     div:nth-child(1n+2) {
-        background-color: lighten(@color, 20%);
+        background-color: lighten(@color1, 20%);
     }
     div:nth-child(1n+3) {
-        background-color: lighten(@color, 40%);
+        background-color: lighten(@color1, 40%);
     }
     div:nth-child(1n+4) {
-        background-color: darken(@color, 10%);   
+        background-color: darken(@color1, 10%);   
     }
     div:nth-child(1n+5) {
-        background-color: darken(@color, 20%);   
+        background-color: darken(@color1, 20%);   
     }
     div:nth-child(1n+6) {
         background-color: saturate(#334D33, 30%); 
@@ -183,58 +168,58 @@
         background-color: saturate(#334D33, 100%); 
     }
     div:nth-child(1n+8) {
-        background-color: desaturate(@color, 20%)
+        background-color: desaturate(@color1, 20%)
     }
     div:nth-child(1n+09) {
-        background-color: desaturate(@color, 80%)
+        background-color: desaturate(@color1, 80%)
     }
     div:nth-child(1n+10) {
-        background-color: fadein(@color, 20%);   
+        background-color: fadein(@color1, 20%);   
     }
     div:nth-child(1n+11) {
-        background-color: fadein(@color, 50%);   
+        background-color: fadein(@color1, 50%);   
     }
     div:nth-child(1n+12) {
-        background-color: fadeout(@color, 20%);  
+        background-color: fadeout(@color1, 20%);  
     }
     div:nth-child(1n+13) {
-        background-color: fadeout(@color, 50%);  
+        background-color: fadeout(@color1, 50%);  
     }
     div:nth-child(1n+14) {
-        background-color: fade(@color, 20%);     
+        background-color: fade(@color1, 20%);     
     }
     div:nth-child(1n+15) {
-        background-color: fade(@color, 50%);     
+        background-color: fade(@color1, 50%);     
     }
     div:nth-child(1n+16) {
-        background-color: spin(@color, 20);
+        background-color: spin(@color1, 20);
     }
     div:nth-child(1n+17) {
-        background-color: spin(@color, 40);
+        background-color: spin(@color1, 40);
     }
     div:nth-child(1n+18) {
-        background-color: spin(@color, -20);    
+        background-color: spin(@color1, -20);    
     }
     div:nth-child(1n+19) {
-        background-color: spin(@color, -40);    
+        background-color: spin(@color1, -40);    
     }
     div:nth-child(1n+20) {
-        background-color: mix(@color, @nice-blue, 100%); 
+        background-color: mix(@color1, blue, 100%); 
     }
     div:nth-child(1n+21) {
-        background-color: mix(@color, @nice-blue, 80%); 
+        background-color: mix(@color1, blue, 80%); 
     }
     div:nth-child(1n+22) {
-        background-color: mix(@color, @nice-blue, 60%); 
+        background-color: mix(@color1, blue, 60%); 
     }
     div:nth-child(1n+23) {
-        background-color: mix(@color, @nice-blue, 40%); 
+        background-color: mix(@color1, blue, 40%); 
     }
     div:nth-child(1n+24) {
-        background-color: mix(@color, @nice-blue, 20%); 
+        background-color: mix(@color1, blue, 20%); 
     }
     div:nth-child(1n+25) {
-        background-color: mix(@color, @nice-blue, 0%); 
+        background-color: mix(@color1, blue, 0%); 
     }
 }
                   </code>
@@ -269,41 +254,40 @@
               <td>
                 <pre class="less-example">
                   <code>
-@color: darkgreen;
 @border-width: 5px;
 .operations .example div {
     div:nth-child(1n+1) {
-        background-color: @color / 3;
+        background-color: @color2 / 3;
     }
     div:nth-child(1n+2) {
-        background-color: @color / 2;
+        background-color: @color2 / 2;
     }
     div:nth-child(1n+3) {
-        background-color: @color;
+        background-color: @color2;
     }
     div:nth-child(1n+4) {
-        background-color: @color * 2;
+        background-color: @color2 * 2;
     }
     div:nth-child(1n+5) {
-        background-color: @color * 3;
+        background-color: @color2 * 3;
     }
     div:nth-child(1n+6) {
-        background-color: @color + #123;
+        background-color: @color2 + #123;
     }
     div:nth-child(1n+7) {
-        background-color: @color + #345;
+        background-color: @color2 + #345;
     }
     div:nth-child(1n+8) {
-        background-color: @color + #678;
+        background-color: @color2 + #678;
     }
     div:nth-child(1n+9) {
-        border: @border-width solid @color + #345;
+        border: @border-width solid @color2 + #345;
     }
     div:nth-child(1n+10) {
-        border: @border-width+3 solid @color + #123;
+        border: @border-width+3 solid @color2 + #123;
     }
     div:nth-child(1n+11) {
-        border: @border-width+6 solid @color;
+        border: @border-width+6 solid @color2;
     }
 }
                   </code>

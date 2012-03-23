@@ -1,3 +1,5 @@
+@import "elements.less";
+
 @light-blue:   hsl(190, 50%, 65%);
 @light-yellow: desaturate(#fefec8, 10%);
 @dark-yellow:  desaturate(darken(@light-yellow, 10%), 40%);
@@ -270,6 +272,8 @@ td {
 .small-boxes {
     width: 70px;
     div {
+        .rounded(5px);
+        .drop-shadow(0, 5px, 5px, 0.4); 
         box-sizing: border-box;
         width: 50px;
         height: 50px;
