@@ -1,0 +1,165 @@
+@import "elements.less";
+
+/* Variables */
+@color0: lightgreen;
+@color1: green;
+@color2: darkgreen;
+.variables .example > div > div {
+    background-color: @color2;
+    border: thick solid @color1;
+}
+
+.variables .example > div {
+    border: thick solid @color0;
+}
+
+/* Mixins */
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.thick-border (@color) {
+    border: thick solid @color;
+}
+
+.mixins .example > div > div {
+    .thick-border(@color1);
+    background-color: @color2;
+    .rounded-corners;
+}
+
+.mixins .example > div {
+    .thick-border(@color0);
+    .rounded-corners(10px);
+}
+
+/* Nested Rules */
+.nested_rules .example div {
+    border: thick solid @color2;
+    div:first-child {
+        .gradient(@color2, @color0, @color1);
+    }
+    div:last-child {
+        .gradient(@color2, @color2, @color0);
+    }
+}
+
+/* Functions */
+.functions .example div {
+    div:nth-child(1n+1) {
+        background-color: @color1;
+    }
+    div:nth-child(1n+2) {
+        background-color: lighten(@color1, 20%);
+    }
+    div:nth-child(1n+3) {
+        background-color: lighten(@color1, 40%);
+    }
+    div:nth-child(1n+4) {
+        background-color: darken(@color1, 10%);   
+    }
+    div:nth-child(1n+5) {
+        background-color: darken(@color1, 20%);   
+    }
+    div:nth-child(1n+6) {
+        background-color: saturate(#334D33, 30%); 
+    }
+    div:nth-child(1n+7) {
+        background-color: saturate(#334D33, 100%); 
+    }
+    div:nth-child(1n+8) {
+        background-color: desaturate(@color1, 20%)
+    }
+    div:nth-child(1n+09) {
+        background-color: desaturate(@color1, 80%)
+    }
+    div:nth-child(1n+10) {
+        background-color: fadein(@color1, 20%);   
+    }
+    div:nth-child(1n+11) {
+        background-color: fadein(@color1, 50%);   
+    }
+    div:nth-child(1n+12) {
+        background-color: fadeout(@color1, 20%);  
+    }
+    div:nth-child(1n+13) {
+        background-color: fadeout(@color1, 50%);  
+    }
+    div:nth-child(1n+14) {
+        background-color: fade(@color1, 20%);     
+    }
+    div:nth-child(1n+15) {
+        background-color: fade(@color1, 50%);     
+    }
+    div:nth-child(1n+16) {
+        background-color: spin(@color1, 20);
+    }
+    div:nth-child(1n+17) {
+        background-color: spin(@color1, 40);
+    }
+    div:nth-child(1n+18) {
+        background-color: spin(@color1, -20);    
+    }
+    div:nth-child(1n+19) {
+        background-color: spin(@color1, -40);    
+    }
+    div:nth-child(1n+20) {
+        background-color: mix(@color1, blue, 100%); 
+    }
+    div:nth-child(1n+21) {
+        background-color: mix(@color1, blue, 80%); 
+    }
+    div:nth-child(1n+22) {
+        background-color: mix(@color1, blue, 60%); 
+    }
+    div:nth-child(1n+23) {
+        background-color: mix(@color1, blue, 40%); 
+    }
+    div:nth-child(1n+24) {
+        background-color: mix(@color1, blue, 20%); 
+    }
+    div:nth-child(1n+25) {
+        background-color: mix(@color1, blue, 0%); 
+    }
+}
+
+
+/* Operations */
+@border-width: 5px;
+.operations .example div {
+    div:nth-child(1n+1) {
+        background-color: @color2 / 3;
+    }
+    div:nth-child(1n+2) {
+        background-color: @color2 / 2;
+    }
+    div:nth-child(1n+3) {
+        background-color: @color2;
+    }
+    div:nth-child(1n+4) {
+        background-color: @color2 * 2;
+    }
+    div:nth-child(1n+5) {
+        background-color: @color2 * 3;
+    }
+    div:nth-child(1n+6) {
+        background-color: @color2 + #123;
+    }
+    div:nth-child(1n+7) {
+        background-color: @color2 + #345;
+    }
+    div:nth-child(1n+8) {
+        background-color: @color2 + #678;
+    }
+    div:nth-child(1n+9) {
+        border: @border-width solid @color2 + #345;
+    }
+    div:nth-child(1n+10) {
+        border: @border-width+3 solid @color2 + #123;
+    }
+    div:nth-child(1n+11) {
+        border: @border-width+6 solid @color2;
+    }
+}
